@@ -34,9 +34,9 @@
     }
   },
   "navigation": {
-    "home": "Inicio",
-    "contact": "Contacto",
-    "cart": "Carrito"
+    "home": "Home",
+    "contact": "Contact",
+    "cart": "Cart"
   },
   "layout": {
     "copyright": "Todos los derechos reservados",
