@@ -10,9 +10,9 @@
 {
   "general": {
     "password_page": {
-      "login_form_heading": "Ingresá la contraseña",
-      "login_form_password_label": "Contraseña",
-      "login_form_submit": "Ingresar"
+      "login_form_heading": "Enter password",
+      "login_form_password_label": "password",
+      "login_form_submit": "Login"
     }
   },
   "products": {
