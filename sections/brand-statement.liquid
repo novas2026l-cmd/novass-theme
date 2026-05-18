@@ -1,0 +1,10 @@
+<section class="brand-statement section--dark">
+  <div class="brand-statement-inner container">
+    <blockquote class="reveal">{{ section.settings.quote | default: "This isn't just air. It's <em>relief</em>." }}</blockquote>
+    <p class="reveal reveal-delay-1">{{ section.settings.subtext | default: 'A constant breeze that surrounds you, like standing in the shade on a hot day.' }}</p>
+    {%- if section.settings.cta_text != blank -%}
+      <a href="{{ section.settings.cta_url | default: routes.collections_url }}" class="btn btn--primary btn--lg reveal reveal-delay-2">{{ section.settings.cta_text }}</a>
+    {%- endif -%}
+  </div>
+</section>
+{% schema %}{"name":"Brand Statement","settings":[{"type":"textarea","id":"quote","label":"Quote","default":"This isn't just air. It's <em>relief<\/em>."},{"type":"text","id":"subtext","label":"Subtext","default":"A constant breeze that surrounds you, like standing in the shade on a hot day."},{"type":"text","id":"cta_text","label":"Button text","default":"Get yours now"},{"type":"url","id":"cta_url","label":"Button URL"}],"presets":[{"name":"Brand Statement"}]}{% endschema %}

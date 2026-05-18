@@ -1,0 +1,8 @@
+<div class="urgency-banner">
+  <div class="urgency-inner">
+    <span class="urgency-dot"></span>
+    <p>{{ section.settings.text | default: 'Limited stock per season — Order now before it sells out' }}{%- if section.settings.link_text != blank and section.settings.link_url != blank -%}<a href="{{ section.settings.link_url }}">{{ section.settings.link_text }}</a>{%- endif -%}</p>
+    <span class="urgency-dot"></span>
+  </div>
+</div>
+{% schema %}{"name":"Urgency Banner","settings":[{"type":"text","id":"text","label":"Banner text","default":"Limited stock per season — Order now before it sells out"},{"type":"text","id":"link_text","label":"Link text"},{"type":"url","id":"link_url","label":"Link URL"}],"presets":[{"name":"Urgency Banner"}]}{% endschema %}

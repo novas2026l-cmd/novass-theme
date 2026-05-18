@@ -1,0 +1,34 @@
+<footer class="site-footer" role="contentinfo">
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-brand">
+        {%- if section.settings.logo != blank -%}
+          <img class="footer-brand-logo" src="{{ section.settings.logo | image_url: width: 160 }}" alt="{{ shop.name }}" width="100" height="36" loading="lazy">
+        {%- else -%}
+          <p class="footer-brand-name">{{ shop.name }}</p>
+        {%- endif -%}
+        <p>{{ section.settings.tagline | default: 'Your body will thank you. Always free and fresh.' }}</p>
+      </div>
+      <div>
+        <p class="footer-heading">Shop</p>
+        <ul class="footer-links">
+          {%- for link in section.settings.menu_shop.links -%}<li><a href="{{ link.url }}">{{ link.title }}</a></li>{%- endfor -%}
+        </ul>
+      </div>
+      <div>
+        <p class="footer-heading">Legal</p>
+        <ul class="footer-links">
+          {%- if shop.privacy_policy != blank -%}<li><a href="{{ shop.privacy_policy.url }}">{{ shop.privacy_policy.title }}</a></li>{%- endif -%}
+          {%- if shop.refund_policy != blank -%}<li><a href="{{ shop.refund_policy.url }}">{{ shop.refund_policy.title }}</a></li>{%- endif -%}
+          {%- if shop.terms_of_service != blank -%}<li><a href="{{ shop.terms_of_service.url }}">{{ shop.terms_of_service.title }}</a></li>{%- endif -%}
+          {%- if shop.shipping_policy != blank -%}<li><a href="{{ shop.shipping_policy.url }}">{{ shop.shipping_policy.title }}</a></li>{%- endif -%}
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; {{ 'now' | date: '%Y' }} {{ shop.name }}. All rights reserved.</p>
+      <p>Powered by <a href="https://www.shopify.com" target="_blank" rel="noopener">Shopify</a></p>
+    </div>
+  </div>
+</footer>
+{% schema %}{"name":"Footer","settings":[{"type":"image_picker","id":"logo","label":"Footer logo"},{"type":"text","id":"tagline","label":"Tagline","default":"Your body will thank you. Always free and fresh."},{"type":"link_list","id":"menu_shop","label":"Shop links","default":"main-menu"}]}{% endschema %}

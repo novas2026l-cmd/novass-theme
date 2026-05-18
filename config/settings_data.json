@@ -1,0 +1,11 @@
+{
+  "current": {
+    "color_primary": "#FF7A3D",
+    "color_accent": "#FF5722",
+    "color_background": "#FFFAF7",
+    "color_text": "#1A1A1A",
+    "font_heading": "cormorant_garamond_n4",
+    "font_body": "inter_n4"
+  },
+  "presets": {}
+}

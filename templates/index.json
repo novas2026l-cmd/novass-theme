@@ -1,0 +1,43 @@
+{
+  "sections": {
+    "urgency-banner": { "type": "urgency-banner", "settings": { "text": "Limited stock per season — Order now before it sells out", "link_text": "Shop now →", "link_url": "/collections/all" } },
+    "hero": { "type": "hero", "settings": { "eyebrow": "Always Free & Fresh", "title": "Your body will <em>thank you<\/em>", "subtitle": "Feel the air like a fresh, dewy leaf brushing against your skin. Cool, soft, and natural.", "cta_text": "Shop Now", "cta_url": "/collections/all" } },
+    "features": {
+      "type": "features",
+      "blocks": {
+        "f1": { "type": "feature", "settings": { "icon": "wind", "title": "Natural Breeze", "description": "Feel the air like a fresh, dewy leaf brushing against your skin. Cool, soft, and completely natural." } },
+        "f2": { "type": "feature", "settings": { "icon": "volume", "title": "Ultra Silent", "description": "Light, quiet… almost invisible, yet powerful enough to change how your entire day feels." } },
+        "f3": { "type": "feature", "settings": { "icon": "battery", "title": "All-Day Battery", "description": "Rechargeable in minutes. Lasts all day. No cables, no interruptions — just constant, refreshing airflow." } }
+      },
+      "block_order": ["f1","f2","f3"],
+      "settings": { "title": "Why NOVA?", "subtitle": "Engineered for your comfort. Designed for your life." }
+    },
+    "product-showcase": {
+      "type": "product-showcase",
+      "blocks": {
+        "pf1": { "type": "feature", "settings": { "text": "3-speed adjustment" } },
+        "pf2": { "type": "feature", "settings": { "text": "Bladeless & ultra-silent design" } },
+        "pf3": { "type": "feature", "settings": { "text": "Rechargeable battery — lasts all day" } },
+        "pf4": { "type": "feature", "settings": { "text": "Clips onto shirt, stroller, car seat & more" } },
+        "pf5": { "type": "feature", "settings": { "text": "Lightweight & wearable — only 120g" } }
+      },
+      "block_order": ["pf1","pf2","pf3","pf4","pf5"],
+      "settings": { "review_count": "124" }
+    },
+    "brand-statement": { "type": "brand-statement", "settings": { "quote": "This isn't just air. It's <em>relief<\/em>.", "subtext": "A constant breeze that surrounds you, like standing in the shade on a hot day.", "cta_text": "Get yours now", "cta_url": "/collections/all" } },
+    "testimonials": {
+      "type": "testimonials",
+      "blocks": {
+        "r1": { "type": "review", "settings": { "name": "Amy E.", "text": "I take it everywhere — the gym, the office, even the car. Absolute game changer for summer." } },
+        "r2": { "type": "review", "settings": { "name": "Michelle", "text": "It actually clips onto my shirt collar and the airflow is incredible. Light as a feather too." } },
+        "r3": { "type": "review", "settings": { "name": "Cindy", "text": "Battery lasts the whole workday. I charged it once on Monday and used it all week." } },
+        "r4": { "type": "review", "settings": { "name": "Amanda", "text": "Bought it for outdoor events during summer and it saved me. The 3-speed control is perfect." } },
+        "r5": { "type": "review", "settings": { "name": "John Peterson", "text": "Got this for my wife who works outdoors. She loves it so much I ordered one for myself." } },
+        "r6": { "type": "review", "settings": { "name": "JY", "text": "Tiny but mighty. Airflow rivals fans 10x its size. Shipped fast and packaged beautifully." } }
+      },
+      "block_order": ["r1","r2","r3","r4","r5","r6"],
+      "settings": { "title": "What customers say", "subtitle": "Real people, real relief." }
+    }
+  },
+  "order": ["urgency-banner","hero","features","product-showcase","brand-statement","testimonials"]
+}

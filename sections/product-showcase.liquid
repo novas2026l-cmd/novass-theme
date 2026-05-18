@@ -1,0 +1,54 @@
+{%- liquid
+  assign showcase_product = all_products[section.settings.product]
+  if showcase_product == blank and collections.all.products.first
+    assign showcase_product = collections.all.products.first
+  endif
+-%}
+<section class="product-showcase section">
+  <div class="product-showcase-inner">
+    <div class="product-gallery reveal-left">
+      <div class="product-gallery-main">
+        {%- if showcase_product != blank and showcase_product.featured_image != blank -%}
+          <img src="{{ showcase_product.featured_image | image_url: width: 800 }}" alt="{{ showcase_product.featured_image.alt | default: showcase_product.title }}" width="800" height="600" loading="lazy">
+        {%- else -%}
+          <img src="{{ 'product-2.png' | asset_url }}" alt="NOVA Portable Fan" width="800" height="600" loading="lazy">
+        {%- endif -%}
+      </div>
+      {%- if showcase_product != blank -%}
+        {%- for image in showcase_product.images limit: 4 -%}{%- unless forloop.first -%}<div class="product-gallery-thumb{% if forloop.index == 2 %} active{% endif %}"><img src="{{ image | image_url: width: 200 }}" alt="{{ image.alt }}" loading="lazy"></div>{%- endunless -%}{%- endfor -%}
+      {%- else -%}
+        {%- assign thumbs = '3,4,5' | split: ',' -%}
+        {%- for n in thumbs -%}<div class="product-gallery-thumb"><img src="{{ 'product-' | append: n | append: '.png' | asset_url }}" alt="Product view" loading="lazy"></div>{%- endfor -%}
+      {%- endif -%}
+    </div>
+    <div class="product-info reveal-right">
+      <span class="product-badge">⚡ Bestseller</span>
+      <h2 class="product-title">
+        {%- if showcase_product != blank -%}{{ showcase_product.title }}{%- else -%}{{ section.settings.fallback_title | default: 'Mini Clip-On Portable Fan' }}{%- endif -%}
+      </h2>
+      <div class="product-stars">
+        <span class="stars">{%- for i in (1..5) -%}<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 0 0 .95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 0 0-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 0 0-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 0 0-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 0 0 .951-.69l1.07-3.292Z"/></svg>{%- endfor -%}</span>
+        <span class="count">5.0 ({{ section.settings.review_count | default: '124' }} reviews)</span>
+      </div>
+      <div class="product-price">{%- if showcase_product != blank -%}{{ showcase_product.price | money }}{%- endif -%}</div>
+      <div class="product-features">
+        {%- for block in section.blocks -%}{%- if block.type == 'feature' -%}
+          <div class="product-feature" {{ block.shopify_attributes }}><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5"/></svg>{{ block.settings.text }}</div>
+        {%- endif -%}{%- endfor -%}
+      </div>
+      {%- if showcase_product != blank -%}
+        {%- form 'product', showcase_product, data-add-to-cart: '' -%}
+          <input type="hidden" name="id" value="{{ showcase_product.selected_or_first_available_variant.id }}">
+          <div class="product-quantity"><button type="button" data-action="minus">−</button><input type="number" name="quantity" value="1" min="1"><button type="button" data-action="plus">+</button></div>
+          <div class="product-actions">
+            <button type="submit" class="btn btn--primary btn--lg btn--full" data-add-to-cart-btn>Add to Cart</button>
+            <a href="{{ showcase_product.url }}" class="btn btn--outline btn--lg btn--full">View Full Details</a>
+          </div>
+        {%- endform -%}
+      {%- else -%}
+        <div class="product-actions"><a href="{{ routes.collections_url }}" class="btn btn--primary btn--lg btn--full">Shop Now</a></div>
+      {%- endif -%}
+    </div>
+  </div>
+</section>
+{% schema %}{"name":"Product Showcase","settings":[{"type":"product","id":"product","label":"Product to showcase"},{"type":"text","id":"fallback_title","label":"Fallback title","default":"Mini Clip-On Portable Fan"},{"type":"text","id":"review_count","label":"Review count","default":"124"}],"blocks":[{"type":"feature","name":"Product Feature","settings":[{"type":"text","id":"text","label":"Feature","default":"3-speed adjustment"}]}],"presets":[{"name":"Product Showcase","blocks":[{"type":"feature","settings":{"text":"3-speed adjustment"}},{"type":"feature","settings":{"text":"Bladeless & ultra-silent design"}},{"type":"feature","settings":{"text":"Rechargeable battery — lasts all day"}},{"type":"feature","settings":{"text":"Clips onto shirt, stroller, car seat & more"}},{"type":"feature","settings":{"text":"Lightweight & wearable — only 120g"}}]}]}{% endschema %}

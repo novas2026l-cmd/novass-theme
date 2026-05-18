@@ -1,0 +1,39 @@
+<div class="cart-page">
+  <h1 class="reveal">Your Cart</h1>
+  {%- if cart.item_count == 0 -%}
+    <div class="cart-empty reveal">
+      <p>Your cart is empty.</p>
+      <a href="{{ routes.collections_url }}" class="btn btn--primary btn--lg">Continue Shopping</a>
+    </div>
+  {%- else -%}
+    {%- form 'cart', cart -%}
+      <table style="width:100%;border-collapse:collapse;margin-bottom:40px;">
+        <thead><tr style="border-bottom:2px solid var(--color-border);text-align:left;"><th style="padding:12px 0;font-size:.8rem;letter-spacing:.1em;text-transform:uppercase;">Product</th><th style="padding:12px 16px;font-size:.8rem;letter-spacing:.1em;text-transform:uppercase;">Qty</th><th style="padding:12px 0;font-size:.8rem;letter-spacing:.1em;text-transform:uppercase;text-align:right;">Total</th></tr></thead>
+        <tbody>
+          {%- for item in cart.items -%}
+            <tr style="border-bottom:1px solid var(--color-border);">
+              <td style="padding:24px 0;">
+                <div style="display:flex;align-items:center;gap:20px;">
+                  {%- if item.image -%}<img src="{{ item.image | image_url: width: 100 }}" alt="{{ item.title }}" width="80" height="80" style="border-radius:var(--radius-sm);object-fit:cover;">{%- endif -%}
+                  <div>
+                    <a href="{{ item.url }}" style="font-family:var(--font-heading);font-size:1.1rem;font-weight:600;">{{ item.product.title }}</a>
+                    {%- unless item.variant.title == 'Default Title' -%}<p style="font-size:.85rem;color:var(--color-text-muted);">{{ item.variant.title }}</p>{%- endunless -%}
+                    <p style="font-size:.9rem;color:var(--color-primary);font-weight:600;">{{ item.price | money }}</p>
+                    <a href="{{ routes.cart_change_url }}?line={{ forloop.index }}&quantity=0" style="font-size:.8rem;color:var(--color-text-muted);text-decoration:underline;">Remove</a>
+                  </div>
+                </div>
+              </td>
+              <td style="padding:24px 16px;"><div class="product-quantity"><button type="button" data-action="minus">−</button><input type="number" name="updates[]" value="{{ item.quantity }}" min="0"><button type="button" data-action="plus">+</button></div></td>
+              <td style="padding:24px 0;text-align:right;font-family:var(--font-heading);font-size:1.15rem;font-weight:700;color:var(--color-primary);">{{ item.line_price | money }}</td>
+            </tr>
+          {%- endfor -%}
+        </tbody>
+      </table>
+      <div style="display:flex;flex-direction:column;align-items:flex-end;gap:20px;max-width:360px;margin-left:auto;">
+        <div style="display:flex;justify-content:space-between;width:100%;padding-bottom:16px;border-bottom:2px solid var(--color-border);"><span style="font-weight:600;font-size:1.1rem;">Subtotal</span><span style="font-family:var(--font-heading);font-size:1.4rem;font-weight:700;color:var(--color-primary);">{{ cart.total_price | money }}</span></div>
+        <button type="submit" name="checkout" class="btn btn--primary btn--lg btn--full">Checkout</button>
+        <a href="{{ routes.collections_url }}" class="btn btn--outline btn--full">Continue Shopping</a>
+      </div>
+    {%- endform -%}
+  {%- endif -%}
+</div>

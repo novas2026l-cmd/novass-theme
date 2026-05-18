@@ -1,0 +1,25 @@
+<section class="features section" id="features">
+  <div class="container">
+    <div class="features-header">
+      <h2 class="reveal">{{ section.settings.title | default: 'Why NOVA?' }}</h2>
+      <p class="reveal reveal-delay-1">{{ section.settings.subtitle | default: 'Engineered for your comfort. Designed for your life.' }}</p>
+    </div>
+    <div class="features-grid">
+      {%- for block in section.blocks -%}
+        <div class="feature-card reveal reveal-delay-{{ forloop.index }}" {{ block.shopify_attributes }}>
+          <div class="feature-icon">
+            {%- case block.settings.icon -%}
+              {%- when 'wind' -%}<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.8" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9.75 3.104v5.714a2.25 2.25 0 0 1-.659 1.591L5 14.5M9.75 3.104c-.251.023-.501.05-.75.082m.75-.082a24.301 24.301 0 0 1 4.5 0m0 0v5.714c0 .597.237 1.17.659 1.591L19.8 15.3M14.25 3.104c.251.023.501.05.75.082M19.8 15.3l-1.57.393A9.065 9.065 0 0 1 12 15a9.065 9.065 0 0 0-6.23-.693L5 14.5m14.8.8 1.402 1.402c1.232 1.232.65 3.318-1.067 3.611A48.309 48.309 0 0 1 12 21c-2.773 0-5.491-.235-8.135-.687-1.718-.293-2.3-2.379-1.067-3.61L5 14.5"/></svg>
+              {%- when 'battery' -%}<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.8" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M21 10.5h.375c.621 0 1.125.504 1.125 1.125v2.25c0 .621-.504 1.125-1.125 1.125H21M4.5 10.5H18V15H4.5v-4.5ZM3.75 18h15A2.25 2.25 0 0 0 21 15.75v-6a2.25 2.25 0 0 0-2.25-2.25h-15A2.25 2.25 0 0 0 1.5 9.75v6A2.25 2.25 0 0 0 3.75 18Z"/></svg>
+              {%- when 'volume' -%}<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.8" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M17.25 9.75 19.5 12m0 0 2.25 2.25M19.5 12l2.25-2.25M19.5 12l-2.25 2.25m-10.5-6 4.72-4.72a.75.75 0 0 1 1.28.53v15.88a.75.75 0 0 1-1.28.53l-4.72-4.72H4.51c-.88 0-1.704-.507-1.938-1.354A9.009 9.009 0 0 1 2.25 12c0-.83.112-1.633.322-2.396C2.806 8.756 3.63 8.25 4.51 8.25H6.75Z"/></svg>
+              {%- else -%}<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.8" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9.813 15.904 9 18.75l-.813-2.846a4.5 4.5 0 0 0-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 0 0 3.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 0 0 3.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 0 0-3.09 3.09Z"/></svg>
+            {%- endcase -%}
+          </div>
+          <h3>{{ block.settings.title }}</h3>
+          <p>{{ block.settings.description }}</p>
+        </div>
+      {%- endfor -%}
+    </div>
+  </div>
+</section>
+{% schema %}{"name":"Features","settings":[{"type":"text","id":"title","label":"Title","default":"Why NOVA?"},{"type":"text","id":"subtitle","label":"Subtitle","default":"Engineered for your comfort. Designed for your life."}],"blocks":[{"type":"feature","name":"Feature","settings":[{"type":"select","id":"icon","label":"Icon","options":[{"value":"wind","label":"Wind"},{"value":"battery","label":"Battery"},{"value":"volume","label":"Silent"},{"value":"star","label":"Star"}],"default":"wind"},{"type":"text","id":"title","label":"Title","default":"Powerful Airflow"},{"type":"textarea","id":"description","label":"Description","default":"Powerful enough to change how your entire day feels."}]}],"presets":[{"name":"Features","blocks":[{"type":"feature","settings":{"icon":"wind","title":"Natural Breeze","description":"Feel the air like a fresh, dewy leaf brushing against your skin. Cool, soft, and completely natural."}},{"type":"feature","settings":{"icon":"volume","title":"Ultra Silent","description":"Light, quiet… almost invisible, yet powerful enough to change how your entire day feels."}},{"type":"feature","settings":{"icon":"battery","title":"All-Day Battery","description":"Rechargeable in minutes. Lasts all day. No cables, no interruptions — just constant, refreshing airflow."}}]}]}{% endschema %}
